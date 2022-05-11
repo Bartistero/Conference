@@ -15,20 +15,20 @@ import java.util.Date;
 public class ApiCatchException {
 
     @ExceptionHandler(value = NotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleNotFoundException(NotFoundException ex, WebRequest request){
-        ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND.value(),new Date(), ex.getMessage());
+    public ResponseEntity<ErrorMessage> handleNotFoundException(NotFoundException ex, WebRequest request) {
+        ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND.value(), new Date(), ex.getMessage());
         return new ResponseEntity<ErrorMessage>(error, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = AlreadyExistsException.class)
-    public ResponseEntity<ErrorMessage> handleAlreadyExistsException(AlreadyExistsException ex, WebRequest request){
-        ErrorMessage error = new ErrorMessage(HttpStatus.CONFLICT.value(),new Date(), ex.getMessage());
+    public ResponseEntity<ErrorMessage> handleAlreadyExistsException(AlreadyExistsException ex, WebRequest request) {
+        ErrorMessage error = new ErrorMessage(HttpStatus.CONFLICT.value(), new Date(), ex.getMessage());
         return new ResponseEntity<ErrorMessage>(error, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(value = LimitException.class)
-    public ResponseEntity<ErrorMessage> handleLimitException(LimitException ex, WebRequest request){
-        ErrorMessage error = new ErrorMessage(HttpStatus.NOT_ACCEPTABLE.value(),new Date(), ex.getMessage());
+    public ResponseEntity<ErrorMessage> handleLimitException(LimitException ex, WebRequest request) {
+        ErrorMessage error = new ErrorMessage(HttpStatus.NOT_ACCEPTABLE.value(), new Date(), ex.getMessage());
         return new ResponseEntity<ErrorMessage>(error, HttpStatus.NOT_ACCEPTABLE);
     }
 }

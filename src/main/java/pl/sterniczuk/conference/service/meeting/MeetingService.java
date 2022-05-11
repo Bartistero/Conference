@@ -26,14 +26,14 @@ public class MeetingService {
 
     @Transactional
     public MeetingSaveDto save(MeetingSaveDto meetingSaveDto) throws FileNotFoundException, AlreadyExistsException, LimitException {
-        if(userRepository.findUserByLogin(meetingSaveDto.getUserDto().getLogin()).isPresent())
+        if (userRepository.findUserByLogin(meetingSaveDto.getUserDto().getLogin()).isPresent())
             throw new AlreadyExistsException("User with login: " + meetingSaveDto.getUserDto().getLogin() + " already exists");
-        List<Meeting> meeting = meetingRepository.findAllByPathAndLecture(meetingSaveDto.getPath(),meetingSaveDto.getLecture());
-        if(meeting.size() >=5) {
+        List<Meeting> meeting = meetingRepository.findAllByPathAndLecture(meetingSaveDto.getPath(), meetingSaveDto.getLecture());
+        if (meeting.size() >= 5) {
             throw new LimitException("the limit of students for this course has been exhausted");
         }
         meetingRepository.save(MeetingSaveDto.meetingDtoToMeeting(meetingSaveDto));
-        mail.send(meetingSaveDto.getUserDto().getEmail(),meetingSaveDto.getUserDto().getLogin());
+        mail.send(meetingSaveDto.getUserDto().getEmail(), meetingSaveDto.getUserDto().getLogin());
         return meetingSaveDto;
     }
 
@@ -42,5 +42,11 @@ public class MeetingService {
         return user.getMeetings().stream()
                 .map(MeetingDto::MeetingToMeetingDto)
                 .collect(Collectors.toList());
+    }
+
+    public Long delete(Long id) throws NotFoundException {
+        Meeting meeting = meetingRepository.findById(id).orElseThrow(() -> new NotFoundException("Meeting with id: " + id + " not found"));
+        meetingRepository.delete(meeting);
+        return id;
     }
 }

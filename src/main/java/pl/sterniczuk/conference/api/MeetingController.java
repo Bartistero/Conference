@@ -1,10 +1,7 @@
 package pl.sterniczuk.conference.api;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.sterniczuk.conference.service.exception.AlreadyExistsException;
 import pl.sterniczuk.conference.service.exception.LimitException;
 import pl.sterniczuk.conference.service.exception.NotFoundException;
@@ -30,5 +27,10 @@ public class MeetingController {
     @GetMapping
     public List<MeetingDto> get(String login) throws NotFoundException {
         return meetingService.get(login);
+    }
+
+    @DeleteMapping
+    public Long delete(Long id) throws NotFoundException {
+        return meetingService.delete(id);
     }
 }
