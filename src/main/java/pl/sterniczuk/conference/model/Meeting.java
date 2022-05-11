@@ -2,8 +2,8 @@ package pl.sterniczuk.conference.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.sterniczuk.conference.model.Lecturer.Lecture;
-import pl.sterniczuk.conference.model.Lecturer.LectureConverter;
+import pl.sterniczuk.conference.model.Lecture.Lecture;
+import pl.sterniczuk.conference.model.Lecture.LectureConverter;
 import pl.sterniczuk.conference.model.Path.Path;
 import pl.sterniczuk.conference.model.Path.PathConverter;
 

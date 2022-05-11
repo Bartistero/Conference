@@ -1,4 +1,4 @@
-package pl.sterniczuk.conference.model.Lecturer;
+package pl.sterniczuk.conference.model.Lecture;
 
 import lombok.Getter;
 

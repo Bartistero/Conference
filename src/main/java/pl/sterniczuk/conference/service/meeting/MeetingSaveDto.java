@@ -2,7 +2,7 @@ package pl.sterniczuk.conference.service.meeting;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.sterniczuk.conference.model.Lecturer.Lecture;
+import pl.sterniczuk.conference.model.Lecture.Lecture;
 import pl.sterniczuk.conference.model.Meeting;
 import pl.sterniczuk.conference.model.Path.Path;
 import pl.sterniczuk.conference.service.user.UserDto;

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.sterniczuk.conference.service.exception.AlreadyExistsException;
+import pl.sterniczuk.conference.service.exception.LimitException;
 import pl.sterniczuk.conference.service.exception.NotFoundException;
 import pl.sterniczuk.conference.service.meeting.MeetingDto;
 import pl.sterniczuk.conference.service.meeting.MeetingSaveDto;
@@ -22,7 +23,7 @@ public class MeetingController {
     private final MeetingService meetingService;
 
     @PostMapping
-    public MeetingSaveDto save(MeetingSaveDto meetingSaveDto) throws FileNotFoundException, AlreadyExistsException {
+    public MeetingSaveDto save(MeetingSaveDto meetingSaveDto) throws FileNotFoundException, AlreadyExistsException, LimitException {
         return meetingService.save(meetingSaveDto);
     }
 
