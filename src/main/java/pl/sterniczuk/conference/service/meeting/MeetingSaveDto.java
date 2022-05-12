@@ -26,7 +26,7 @@ public class MeetingSaveDto {
     public static MeetingSaveDto meetingToMeetingDto(Meeting meeting, MeetingSaveDto meetingSaveDto) {
         meetingSaveDto.setLecture(meeting.getLecture());
         meetingSaveDto.setPath(meeting.getPath());
-        meetingSaveDto.setUserDto(UserDto.userToUserDro(meeting.getUser()));
+        meetingSaveDto.setUserDto(UserDto.userToUserDto(meeting.getUser()));
         return meetingSaveDto;
     }
 }

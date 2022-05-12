@@ -9,5 +9,8 @@ import java.util.List;
 
 public interface MeetingRepository extends CrudRepository<Meeting, Long> {
     List<Meeting> findAllByPathAndLecture(Path Path, Lecture Lecture);
+    List<Meeting> findAll();
+    List<Meeting> findAllByPath(Path path);
+    List<Meeting> findAllByLecture(Lecture lecture);
 
 }
