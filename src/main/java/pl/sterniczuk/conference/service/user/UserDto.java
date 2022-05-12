@@ -19,7 +19,7 @@ public class UserDto {
         return user;
     }
 
-    public static UserDto userToUserDro(User user) {
+    public static UserDto userToUserDto(User user) {
         UserDto userDto = new UserDto();
         userDto.setLogin(user.getLogin());
         userDto.setEmail(user.getEmail());
