@@ -8,6 +8,7 @@ import pl.sterniczuk.conference.service.exception.NotFoundException;
 import pl.sterniczuk.conference.service.meeting.MeetingDto;
 import pl.sterniczuk.conference.service.meeting.MeetingSaveDto;
 import pl.sterniczuk.conference.service.meeting.MeetingService;
+import pl.sterniczuk.conference.service.user.UserDto;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -27,6 +28,11 @@ public class MeetingController {
     @GetMapping
     public List<MeetingDto> get(String login) throws NotFoundException {
         return meetingService.get(login);
+    }
+
+    @PutMapping
+    public UserDto put(String login, String email) throws NotFoundException {
+        return meetingService.put(login,email);
     }
 
     @DeleteMapping

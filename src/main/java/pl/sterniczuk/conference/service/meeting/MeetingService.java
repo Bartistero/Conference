@@ -10,6 +10,7 @@ import pl.sterniczuk.conference.mail.Mail;
 import pl.sterniczuk.conference.service.exception.AlreadyExistsException;
 import pl.sterniczuk.conference.service.exception.LimitException;
 import pl.sterniczuk.conference.service.exception.NotFoundException;
+import pl.sterniczuk.conference.service.user.UserDto;
 
 import javax.transaction.Transactional;
 import java.io.FileNotFoundException;
@@ -38,10 +39,19 @@ public class MeetingService {
     }
 
     public List<MeetingDto> get(String login) throws NotFoundException {
-        User user = userRepository.findAllByLogin(login).orElseThrow(() -> new NotFoundException("user with login : " + login + " not found"));
+        User user = userRepository.findUserByLogin(login).orElseThrow(() ->
+                new NotFoundException("user with login : " + login + " not found"));
         return user.getMeetings().stream()
                 .map(MeetingDto::MeetingToMeetingDto)
                 .collect(Collectors.toList());
+    }
+
+    public UserDto put(String login, String email) throws NotFoundException {
+        User user = userRepository.findUserByLogin(login).orElseThrow(() ->
+                new NotFoundException("user with login : " + login + " not found"));
+        user.setEmail(email);
+        userRepository.save(user);
+        return new UserDto(login, email);
     }
 
     public Long delete(Long id) throws NotFoundException {

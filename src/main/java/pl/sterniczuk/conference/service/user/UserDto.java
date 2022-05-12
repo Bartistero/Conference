@@ -1,14 +1,14 @@
 package pl.sterniczuk.conference.service.user;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pl.sterniczuk.conference.model.User;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
+
     String login;
     String email;
 
