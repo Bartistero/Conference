@@ -32,7 +32,7 @@ public class MeetingController {
 
     @PutMapping
     public UserDto put(String login, String email) throws NotFoundException {
-        return meetingService.put(login,email);
+        return meetingService.put(login, email);
     }
 
     @DeleteMapping

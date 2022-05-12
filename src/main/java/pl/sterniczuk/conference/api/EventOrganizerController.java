@@ -19,12 +19,12 @@ public class EventOrganizerController {
     private final EventOrganizerService eventOrganizerService;
 
     @GetMapping
-    public List<UserDto> getUser(){
+    public List<UserDto> getUser() {
         return eventOrganizerService.getUser();
     }
 
     @GetMapping("/statistics")
-    public List<StatisticsDto> getStatistics(Statistics statistics){
+    public List<StatisticsDto> getStatistics(Statistics statistics) {
         return eventOrganizerService.getStatistics(statistics);
     }
 }
