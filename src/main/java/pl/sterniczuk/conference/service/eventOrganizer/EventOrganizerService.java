@@ -41,6 +41,7 @@ public class EventOrganizerService {
         double second = meetingRepository.findAllByLecture(Lecture.SECOND_LECTURE).size();
         double third = meetingRepository.findAllByLecture(Lecture.THIRD_LECTURE).size();
         double all = meetingRepository.findAll().size();
+        if (all == 0) all = 1;
 
         StatisticsDto firstDto = new StatisticsDto(Lecture.FIRST_LECTURE.toString(), percentageFormat.format(first / all));
         statisticsList.add(firstDto);
@@ -57,6 +58,7 @@ public class EventOrganizerService {
         double second = meetingRepository.findAllByPath(Path.SECOND_PATH).size();
         double third = meetingRepository.findAllByPath(Path.THIRD_PATH).size();
         double all = meetingRepository.findAll().size();
+        if (all == 0) all = 1;
 
         StatisticsDto firstDto = new StatisticsDto(Path.FIRST_PATH.toString(), percentageFormat.format(first / all));
         statisticsList.add(firstDto);
